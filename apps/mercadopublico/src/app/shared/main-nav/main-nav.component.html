@@ -1,0 +1,32 @@
+<mat-sidenav-container class="sidenav-container" fullscreen>
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-nav-list>
+
+<mat-menu #animals="matMenu" [overlapTrigger]="false">
+        <a mat-menu-item >Vertebrates</a>
+        <a mat-menu-item >Invertebrates</a>
+      </mat-menu>
+<a mat-list-item [matMenuTriggerFor]="animals" >MENU</a>
+
+      <a mat-list-item routerLink="/inicio">Inicio</a>
+      <a mat-list-item routerLink="/proveedores">Proveedores</a>
+      <a mat-list-item routerLink="/dashboard">DashBoard</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Mercado Publico / Organización</span>
+    </mat-toolbar>
+  </mat-sidenav-content>
+  <mat-sidenav-content class="example-sidenav-container">
+    <div class=".main-container">
+      <router-outlet></router-outlet>
+
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

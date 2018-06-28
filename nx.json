@@ -1,0 +1,18 @@
+{
+  "npmScope": "mercadopublico",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "mercadopublico": {
+      "tags": []
+    },
+    "mercadopublico-e2e": {
+      "tags": []
+    }
+  }
+}
