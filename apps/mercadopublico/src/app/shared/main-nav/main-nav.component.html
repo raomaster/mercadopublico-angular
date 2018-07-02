@@ -4,14 +4,15 @@
     <mat-toolbar color="primary">Menu</mat-toolbar>
     <mat-nav-list>
 
-<mat-menu #animals="matMenu" [overlapTrigger]="false">
-        <a mat-menu-item >Vertebrates</a>
-        <a mat-menu-item >Invertebrates</a>
+      <mat-menu #animals="matMenu" [overlapTrigger]="false">
+        <a mat-menu-item>Vertebrates</a>
+        <a mat-menu-item>Invertebrates</a>
       </mat-menu>
-<a mat-list-item [matMenuTriggerFor]="animals" >MENU</a>
+      <a mat-list-item [matMenuTriggerFor]="animals">MENU</a>
 
       <a mat-list-item routerLink="/inicio">Inicio</a>
       <a mat-list-item routerLink="/proveedores">Proveedores</a>
+      <a mat-list-item routerLink="/moneda">Divisa</a>
       <a mat-list-item routerLink="/dashboard">DashBoard</a>
     </mat-nav-list>
   </mat-sidenav>

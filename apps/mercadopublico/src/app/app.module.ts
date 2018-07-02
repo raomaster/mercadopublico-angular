@@ -1,6 +1,5 @@
 import { PagesComponent } from './pages/pages.component';
 import { APP_ROUTES } from './app.routes';
-import { RoutesModule } from './routes/routes.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
@@ -9,15 +8,42 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainNavComponent } from './shared/main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import {
-  MatToolbarModule,
+  MatAutocompleteModule,
+  MatBadgeModule,
+  MatBottomSheetModule,
   MatButtonModule,
-  MatSidenavModule,
-  MatIconModule,
-  MatListModule,
-  MatGridListModule,
+  MatButtonToggleModule,
   MatCardModule,
-  MatMenuModule
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatDividerModule,
+  MatExpansionModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatNativeDateModule,
+  MatPaginatorModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatSortModule,
+  MatStepperModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule,
+  MatTreeModule
 } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatTableModule } from '@angular/material/table';
 import { InicioComponent } from './inicio/inicio.component';
@@ -31,8 +57,54 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { BreadcrumbsComponent } from './shared/breadcrumbs/breadcrumbs.component';
 import { ProveedoresComponent } from './pages/proveedores/proveedores.component';
 import { MainDashComponent } from './pages/main-dash/main-dash.component';
-import { CdkTable } from '@angular/cdk/table';
 import { GraficoTortaComponent } from './components/grafico-torta/grafico-torta.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CurrencyComponent } from './pages/currency/currency.component';
+import { CdkTableModule } from '@angular/cdk/table';
+import { CdkTreeModule } from '@angular/cdk/tree';
+
+@NgModule({
+  exports: [
+    CdkTableModule,
+    CdkTreeModule,
+    MatAutocompleteModule,
+    MatBadgeModule,
+    MatBottomSheetModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatStepperModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatSortModule,
+    MatTableModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatTreeModule
+  ]
+})
+export class MaterialModule {}
 
 @NgModule({
   declarations: [
@@ -50,13 +122,18 @@ import { GraficoTortaComponent } from './components/grafico-torta/grafico-torta.
     ProveedoresComponent,
     MainDashComponent,
     PagesComponent,
-    GraficoTortaComponent
+    GraficoTortaComponent,
+    CurrencyComponent
   ],
   imports: [
     BrowserModule,
     NxModule.forRoot(),
     BrowserAnimationsModule,
     LayoutModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
@@ -66,9 +143,9 @@ import { GraficoTortaComponent } from './components/grafico-torta/grafico-torta.
     MatCardModule,
     MatMenuModule,
     MatTableModule,
-    // CdkTable,
-    // RoutesModule
-    APP_ROUTES
+    APP_ROUTES,
+    HttpClientModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,6 +6,7 @@ import { NopagefoundComponent } from './shared/nopagefound/nopagefound.component
 import { MainDashComponent } from './pages/main-dash/main-dash.component';
 import { ProveedoresComponent } from './pages/proveedores/proveedores.component';
 import { InicioComponent } from './inicio/inicio.component';
+import { CurrencyComponent } from './pages/currency/currency.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
         path: 'proveedores',
         component: ProveedoresComponent
       },
+      { path: 'moneda', component: CurrencyComponent },
       { path: '**', component: NopagefoundComponent }
     ]
   }
