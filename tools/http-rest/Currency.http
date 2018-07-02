@@ -1,0 +1,5 @@
+@fecha = 2016-12-08
+https://openexchangerates.org/api/historical/{{fecha}}.json
+?app_id={{currencyToken}}
+&base=USD
+&symbols=CLP

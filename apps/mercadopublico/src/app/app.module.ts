@@ -32,6 +32,7 @@ import { BreadcrumbsComponent } from './shared/breadcrumbs/breadcrumbs.component
 import { ProveedoresComponent } from './pages/proveedores/proveedores.component';
 import { MainDashComponent } from './pages/main-dash/main-dash.component';
 import { CdkTable } from '@angular/cdk/table';
+import { GraficoTortaComponent } from './components/grafico-torta/grafico-torta.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { CdkTable } from '@angular/cdk/table';
     BreadcrumbsComponent,
     ProveedoresComponent,
     MainDashComponent,
-    PagesComponent
+    PagesComponent,
+    GraficoTortaComponent
   ],
   imports: [
     BrowserModule,
