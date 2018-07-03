@@ -19,9 +19,9 @@
       <div>
         <mat-form-field>
           <input matInput [min]="divisa.fechaInicio" [max]="divisa.fechaFin" [matDatepicker]="picker3" [formControl]="divisa.fecha"
-            (dateChange)="EndDateChange($event)" placeholder="Elige una Fecha" (dateChange)="EndDateChange($event)">
+ (dateChange)="EndDateChange($event)" placeholder="Elige una Fecha" (dateChange)="EndDateChange($event)" disabled>
           <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
-          <mat-datepicker #picker3></mat-datepicker>
+          <mat-datepicker #picker3 disabled="false"></mat-datepicker>
         </mat-form-field>
 
         <div >

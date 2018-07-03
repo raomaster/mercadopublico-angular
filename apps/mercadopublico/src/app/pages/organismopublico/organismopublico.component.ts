@@ -1,9 +1,10 @@
-import { map, takeUntil } from 'rxjs/operators';
-import { Organismo } from './../../modelos/organismopublico';
+import { element } from 'protractor';
+import { takeUntil, map } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { Observable, Subject } from 'rxjs';
+import { Subject, Observable, BehaviorSubject } from 'rxjs';
 import { MatTableDataSource } from '@angular/material';
+import { FirebaseListObservable } from 'angularfire2/database-deprecated';
 
 @Component({
   selector: 'app-organismopublico',
@@ -11,30 +12,31 @@ import { MatTableDataSource } from '@angular/material';
   styleUrls: ['./organismopublico.component.css']
 })
 export class OrganismopublicoComponent implements OnInit {
-  organismospublicos: Observable<any[]>;
-  ELEMENT_DATA: Organismo[];
   displayedColumns = ['CodigoEmpresa', 'NombreEmpresa', 'habilitado'];
   dataSource: any;
   destroy$: Subject<void> = new Subject();
   db: AngularFireDatabase;
   title: string;
+  organismos: FirebaseListObservable<any[]>;
+  items: Observable<any[]>;
+  size$: BehaviorSubject<string | null>;
+
   constructor(db: AngularFireDatabase) {
-    //this.organismospublicos =
     this.db = db;
     this.title = 'Organismos Publicos';
   }
-  //this.ELEMENT_DATA = this.organismospublicos;
 
   ngOnInit() {
-    // this.organismospublicos.subscribe(row => {
-    //   this.ELEMENT_DATA = row as Organismo[];
-    // });
-    // this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
     this.dataSource = new MatTableDataSource([]);
     this.db
       .list('compradores/listaEmpresas')
-      .valueChanges()
-      .pipe(takeUntil(this.destroy$)) // Complete & cleanup
+      .snapshotChanges()
+      .pipe(
+        map(changes =>
+          changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+        )
+        //takeUntil(this.destroy$)) // Complete & cleanup
+      )
       .subscribe(data => (this.dataSource.data = data));
   }
   ngOnDestroy() {
@@ -43,5 +45,16 @@ export class OrganismopublicoComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  cambio(elemento) {
+    // console.log(elemento);
+    elemento.habilitado = !elemento.habilitado;
+    // this.db.object('compradores/listaEmpresas/CodigoEmpresa').set(elemento);
+    this.db.list('compradores/listaEmpresas').update(elemento.key, {
+      CodigoEmpresa: elemento.CodigoEmpresa,
+      NombreEmpresa: elemento.NombreEmpresa,
+      habilitado: elemento.habilitado
+    });
   }
 }

@@ -42,10 +42,14 @@
               <td mat-cell *matCellDef="let element"> {{element.NombreEmpresa}} </td>
             </ng-container>
 
-            <!-- Weight Column -->
+            <!-- Habilitado Column -->
             <ng-container matColumnDef="habilitado">
               <th mat-header-cell *matHeaderCellDef> Habilitado </th>
-              <td mat-cell *matCellDef="let element"> {{element.habilitado}} </td>
+              <td mat-cell *matCellDef="let element">
+<mat-slide-toggle class="example-margin" [checked]="element.habilitado" (change)="cambio(element)">
+                  Habilitame!
+                </mat-slide-toggle>
+              </td>
             </ng-container>
 
             <!-- Symbol Column -->

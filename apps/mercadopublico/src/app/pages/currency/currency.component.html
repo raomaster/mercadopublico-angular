@@ -22,9 +22,9 @@
           <div>
             <mat-form-field>
               <input matInput [min]="fechaInicio" [max]="fechaFin" [matDatepicker]="picker" [formControl]="fecha" placeholder="Elige una Fecha"
-                (dateChange)="EndDateChange($event)">
+                (dateChange)="EndDateChange($event)" (disabled)="true">
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
+              <mat-datepicker #picker disabled="false"></mat-datepicker>
             </mat-form-field>
 
             <div *ngIf="valorCLP">
