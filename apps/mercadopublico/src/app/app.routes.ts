@@ -7,6 +7,7 @@ import { MainDashComponent } from './pages/main-dash/main-dash.component';
 import { ProveedoresComponent } from './pages/proveedores/proveedores.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { CurrencyComponent } from './pages/currency/currency.component';
+import { OrganismopublicoComponent } from './pages/organismopublico/organismopublico.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent, pathMatch: 'full' },
@@ -22,6 +23,7 @@ const appRoutes: Routes = [
         component: ProveedoresComponent
       },
       { path: 'moneda', component: CurrencyComponent },
+      { path: 'organismo/publico', component: OrganismopublicoComponent },
       { path: '**', component: NopagefoundComponent }
     ]
   }

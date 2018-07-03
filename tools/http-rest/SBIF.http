@@ -1,0 +1,11 @@
+@anio=2018
+@mes=01
+@dia=01
+GET https://api.sbif.cl/api-sbifv3/recursos_api/dolar/{{anio}}/{{mes}}/dias/{{dia}}
+?apikey={{sbifToken}}
+&formato=json
+### Buscar UF
+GET https://api.sbif.cl/api-sbifv3/recursos_api/uf/{{anio}}/{{mes}}/dias/{{dia}}
+?apikey={{sbifToken}}
+&formato=json
+

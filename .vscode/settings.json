@@ -13,7 +13,9 @@
       "token": "product token"
     },
     "desarrollo": {
-      "currencyToken": "af037fa2d0c94318930b432fc2704f56"
+      "currencyToken": "af037fa2d0c94318930b432fc2704f56",
+      "mercadopublicoToken": "47B7E7D3-5466-4459-B826-5A6FE8A4C520",
+      "sbifToken": "aa978da4dc1db427283227cd1603a81ddc91db11"
     }
   }
 }

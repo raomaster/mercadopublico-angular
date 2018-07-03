@@ -1,13 +1,13 @@
 <div class="grid-container">
   <h1 class="mat-h1">Calculo de divisas</h1>
   <mat-grid-list cols="2" rowHeight="350px">
-    <mat-grid-tile [colspan]="2" [rowspan]="1">
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
       <mat-card class="proveedores-card">
         <mat-card-header class="dashboard-card-title">
           <mat-card-title>
+            <h3>DOLAR</h3>
             <div>
-
-              Valor del Dolar a CLP . Històrico
+              Valor del Dolar a CLP . Histórico
             </div>
             <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
               <mat-icon>more_vert</mat-icon>
@@ -21,11 +21,10 @@
         <mat-card-content class="dashboard-card-content">
           <div>
             <mat-form-field>
-              <input matInput [min]="fechaInicio" [max]="fechaFin"
-                      [matDatepicker]="piker" placeholder="Elige una Fecha" (dateChange)="EndDateChange($event)"
-                    >
-              <mat-datepicker-toggle matSuffix [for]="piker"></mat-datepicker-toggle>
-              <mat-datepicker #piker></mat-datepicker>
+              <input matInput [min]="fechaInicio" [max]="fechaFin" [matDatepicker]="picker" [formControl]="fecha" placeholder="Elige una Fecha"
+                (dateChange)="EndDateChange($event)">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
 
             <div *ngIf="valorCLP">
@@ -35,6 +34,45 @@
           </div>
         </mat-card-content>
       </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <mat-card class="proveedores-card">
+        <mat-card-header class="dashboard-card-title">
+          <mat-card-title>
+            <h3>UF</h3>
+            <div>
+
+              Valor de la UF a CLP, Histórico
+            </div>
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div>
+            <mat-form-field>
+              <input matInput [min]="fechaInicio" [max]="fechaFin" [matDatepicker]="piker2" [formControl]="fechaUF" placeholder="Elige una Fecha"
+                (dateChange)="EndUFDateChange($event)">
+              <mat-datepicker-toggle matSuffix [for]="piker2"></mat-datepicker-toggle>
+              <mat-datepicker #piker2></mat-datepicker>
+            </mat-form-field>
+
+            <div *ngIf="valorUFCLP">
+              <h3>Valor CLP: {{valorUFCLP.UFs[0].Valor}}
+              </h3>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <app-divisa *ngIf="divisaUTM" [divisa]="divisaUTM" (cambio)="consultarUTMCLP($event)">
+      </app-divisa>
     </mat-grid-tile>
   </mat-grid-list>
 </div>

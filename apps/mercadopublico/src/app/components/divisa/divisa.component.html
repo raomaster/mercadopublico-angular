@@ -1,0 +1,34 @@
+
+  <mat-card class="proveedores-card">
+    <mat-card-header class="dashboard-card-title">
+      <mat-card-title>
+        <h3>{{divisa.titulo}}</h3>
+        <div>
+          {{divisa.cuerpo}}
+        </div>
+        <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" xPosition="before">
+          <button mat-menu-item>Expand</button>
+          <button mat-menu-item>Remove</button>
+        </mat-menu>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="dashboard-card-content">
+      <div>
+        <mat-form-field>
+          <input matInput [min]="divisa.fechaInicio" [max]="divisa.fechaFin" [matDatepicker]="picker3" [formControl]="divisa.fecha"
+            (dateChange)="EndDateChange($event)" placeholder="Elige una Fecha" (dateChange)="EndDateChange($event)">
+          <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+          <mat-datepicker #picker3></mat-datepicker>
+        </mat-form-field>
+
+        <div >
+          <h3>Valor CLP: {{divisa.valor}}
+          </h3>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+

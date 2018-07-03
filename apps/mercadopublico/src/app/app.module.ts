@@ -41,7 +41,8 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatTreeModule
+  MatTreeModule,
+  DateAdapter
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -62,6 +63,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CurrencyComponent } from './pages/currency/currency.component';
 import { CdkTableModule } from '@angular/cdk/table';
 import { CdkTreeModule } from '@angular/cdk/tree';
+import { OrganismopublicoComponent } from './pages/organismopublico/organismopublico.component';
+import { DivisaComponent } from './components/divisa/divisa.component';
 
 @NgModule({
   exports: [
@@ -102,7 +105,8 @@ import { CdkTreeModule } from '@angular/cdk/tree';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule
-  ]
+  ],
+  declarations: [OrganismopublicoComponent]
 })
 export class MaterialModule {}
 
@@ -123,7 +127,8 @@ export class MaterialModule {}
     MainDashComponent,
     PagesComponent,
     GraficoTortaComponent,
-    CurrencyComponent
+    CurrencyComponent,
+    DivisaComponent
   ],
   imports: [
     BrowserModule,
@@ -150,4 +155,9 @@ export class MaterialModule {}
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+  // Injeccion para poner la fecha en formato local
+  constructor(private dateAdapter: DateAdapter<Date>) {
+    dateAdapter.setLocale('es-cl'); // DD/MM/YYYY
+  }
+}
