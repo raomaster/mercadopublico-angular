@@ -31,5 +31,5 @@ const appRoutes: Routes = [
 
 export const APP_ROUTES = RouterModule.forRoot(
   appRoutes,
-  { enableTracing: true } // <-- debugging purposes only
+  { enableTracing: false } // <-- debugging purposes only
 );
